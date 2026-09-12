@@ -10,9 +10,7 @@ export interface ICategories {
 const Categories = ({ categoriesPromise }: ICategories) => {
     const categoriesData = use(categoriesPromise);
     const [selectedStack, setSelectedStack] = useState<devStackTypes[]>([]);
-    const [isSelected, setIsSelected] = useState<boolean>(false);
-    // const [isRemove, setIsRemove] = useState<boolean>(false);
-    // console.log(categoriesData)
+
     return (
         <div className="my-6">
 
@@ -25,8 +23,7 @@ const Categories = ({ categoriesPromise }: ICategories) => {
                         categoriesData={categoriesData}
                         selectedStack={selectedStack}
                         setSelectedStack={setSelectedStack}
-                        isSelected={isSelected}
-                        setIsSelected={setIsSelected}
+                       
                     ></Category>
                 </div>
 
@@ -34,8 +31,7 @@ const Categories = ({ categoriesPromise }: ICategories) => {
                     <ChooseStack
                         selectedStack={selectedStack}
                         setSelectedStack={setSelectedStack}
-                        isSelected={isSelected}
-                        setIsSelected={setIsSelected}
+                       
                     ></ChooseStack>
                 </div>
 

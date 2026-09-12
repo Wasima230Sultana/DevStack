@@ -6,16 +6,15 @@ export interface IStackCard {
     stack: devStackTypes,
     selectedStack: devStackTypes[],
     setSelectedStack: Dispatch<SetStateAction<devStackTypes[]>>
-    isSelected: boolean,
-    setIsSelected: Dispatch<SetStateAction<boolean>>
+ 
 }
 
-const StackCard = ({ stack, selectedStack, setSelectedStack, isSelected, setIsSelected }: IStackCard) => {
+const StackCard = ({ stack, selectedStack, setSelectedStack }: IStackCard) => {
 
     const handleDelete = (stackId: string) => {
         const remainingStack = selectedStack.filter((st) => st.id !== stackId)
         setSelectedStack(remainingStack);
-        setIsSelected(false)
+        
 
     }
 

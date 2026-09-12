@@ -5,11 +5,10 @@ import StackCard from "./StackCard";
 export interface IChooseStack {
     selectedStack: devStackTypes[],
     setSelectedStack: Dispatch<SetStateAction<devStackTypes[]>>
-    isSelected: boolean,
-    setIsSelected: Dispatch<SetStateAction<boolean>>
+
 }
 
-const ChooseStack = ({ selectedStack, setSelectedStack, isSelected, setIsSelected }: IChooseStack) => {
+const ChooseStack = ({ selectedStack, setSelectedStack }: IChooseStack) => {
     const handleAllRemove = () => {
         setSelectedStack([]);
     }
@@ -47,8 +46,7 @@ const ChooseStack = ({ selectedStack, setSelectedStack, isSelected, setIsSelecte
                                 stack={stack}
                                 selectedStack={selectedStack}
                                 setSelectedStack={setSelectedStack}
-                                isSelected={isSelected}
-                                setIsSelected={setIsSelected}
+                                
                             />)
                     }
                 </div>

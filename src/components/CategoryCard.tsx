@@ -16,7 +16,7 @@ const CategoryCard = ({
 }: ICategoryCArd) => {
 
 
-    const isSelected = selectedStack.find(
+    const isSelected = selectedStack.some(
         (stack) => stack.id === category.id
     );
 
