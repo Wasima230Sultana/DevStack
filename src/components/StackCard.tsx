@@ -6,19 +6,19 @@ export interface IStackCard {
     stack: devStackTypes,
     selectedStack: devStackTypes[],
     setSelectedStack: Dispatch<SetStateAction<devStackTypes[]>>
-    isRemove : boolean,
- setIsRemove : Dispatch<SetStateAction<boolean>>
+    isSelected: boolean,
+    setIsSelected: Dispatch<SetStateAction<boolean>>
 }
 
-const StackCard = ({stack,selectedStack,setSelectedStack,isRemove,setIsRemove}:IStackCard) => {
-    const handleDelete=(stackId:string)=>{
-        setIsRemove(true);
-        console.log(isRemove)
-        const remainingStack = selectedStack.filter((st)=>st.id !== stackId)
+const StackCard = ({ stack, selectedStack, setSelectedStack, isSelected, setIsSelected }: IStackCard) => {
+
+    const handleDelete = (stackId: string) => {
+        const remainingStack = selectedStack.filter((st) => st.id !== stackId)
         setSelectedStack(remainingStack);
-        
+        setIsSelected(false)
+
     }
-    
+
     return (
         <div className="flex justify-between items-center my-4  border-1 border-gray-400 p-4 rounded-2xl">
             <div className="flex items-center">
@@ -29,7 +29,7 @@ const StackCard = ({stack,selectedStack,setSelectedStack,isRemove,setIsRemove}:I
                 </div>
             </div>
             <div>
-                <button onClick={()=>handleDelete(stack.id)} className="text-4xl">
+                <button onClick={() => handleDelete(stack.id)} className="text-4xl">
                     <MdOutlineCancel />
                 </button>
             </div>

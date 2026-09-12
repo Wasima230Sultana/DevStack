@@ -6,12 +6,12 @@ export interface ICategory {
     categoriesData: devStackTypes[],
     selectedStack: devStackTypes[],
     setSelectedStack: Dispatch<SetStateAction<devStackTypes[]>>,
- isRemove : boolean,
- setIsRemove : Dispatch<SetStateAction<boolean>>
+ isSelected : boolean,
+ setIsSelected : Dispatch<SetStateAction<boolean>>
 
 }
 
-const Category = ({ categoriesData, selectedStack, setSelectedStack,isRemove,setIsRemove }: ICategory) => {
+const Category = ({ categoriesData, selectedStack, setSelectedStack,isSelected,setIsSelected }: ICategory) => {
 
     return (
         <div>
@@ -23,8 +23,8 @@ const Category = ({ categoriesData, selectedStack, setSelectedStack,isRemove,set
                             category={category}
                             selectedStack={selectedStack}
                             setSelectedStack={setSelectedStack}
-                           isRemove={isRemove}
-                      setIsRemove={setIsRemove}
+                           isSelected={isSelected}
+                      setIsSelected={setIsSelected}
                         ></CategoryCard>)
                 }
             </div>

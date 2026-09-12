@@ -6,22 +6,23 @@ export interface ICategoryCArd {
     category: devStackTypes,
     selectedStack: devStackTypes[],
     setSelectedStack: Dispatch<SetStateAction<devStackTypes[]>>
- isRemove : boolean,
- setIsRemove : Dispatch<SetStateAction<boolean>>
+    isSelected: boolean,
+    setIsSelected: Dispatch<SetStateAction<boolean>>
 }
 
-const CategoryCard = ({ category, selectedStack, setSelectedStack ,isRemove,setIsRemove}: ICategoryCArd) => {
-    const [isSelected, setIsSelected] = useState<boolean>(false);
-    const handleStack = (type:boolean) => {
-        setIsSelected(type)
+const CategoryCard = ({ category, selectedStack, setSelectedStack, isSelected, setIsSelected }: ICategoryCArd) => {
+    const [selected, setSelected] = useState<boolean>(false);
+    const handleStack = () => {
+        setIsSelected(true)
+        setSelected(true)
         toast.success(" Added the stack successfully.")
         setSelectedStack([...selectedStack, category])
-        
+
 
     }
     return (
         <div>
-            <div className={`border ${isSelected?'border-red-400':'border-gray-300'}  p-5 rounded-3xl shadow-sm hover:shadow-lg transition duration-300`}>
+            <div className={`border ${selected ? 'border-red-400' : 'border-gray-300'}  p-5 rounded-3xl shadow-sm hover:shadow-lg transition duration-300`}>
 
                 {/* Header */}
                 <div className="flex justify-between items-start my-2">
@@ -73,34 +74,24 @@ const CategoryCard = ({ category, selectedStack, setSelectedStack ,isRemove,setI
 
                 {/* Button */}
                 <div className={` mt-5 `}>
-                    {
-                        isRemove?
-                        <div> 
-                            <button onClick={() => handleStack(false)} className={`btn w-full rounded-2xl bg-black text-white hover:bg-gray-800 ${isSelected ? 'bg-gray-400' : ''} border ${isSelected?'border-red-400':'border-gray-300'}`}
-                    >
 
-                        {
-                            ((isSelected) ? 'Added to Stack' : 'Add to Stack')
-                        }
-                        
+                    <div>
+                        <button onClick={() => handleStack()} className={`btn w-full rounded-2xl bg-black text-white hover:bg-gray-800
+                         ${selected ? 'bg-gray-400' : ''}
+                          border ${selected ? 'border-red-400' :'border-gray-300'}`}
+                        disabled={!!selected}
+                        >
 
-                    </button></div>
-                        :
-                        <div>
-                             <button onClick={() => handleStack(true)} className={`btn w-full rounded-2xl bg-black text-white hover:bg-gray-800 ${isSelected ? 'bg-gray-400' : ''} border ${isSelected?'border-red-400':'border-gray-300'}`}
-                        disabled={isSelected}
-                    >
+                            {
+                                ((selected) ? 'Added to Stack' : 'Add to Stack')
+                            }
 
-                        {
-                            ((isSelected) ? 'Added to Stack' : 'Add to Stack')
-                        }
-                        
 
-                    </button>
-                        </div>
-                    }
+                        </button>
+                    </div>
 
-                   
+
+
                 </div>
 
             </div>

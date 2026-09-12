@@ -5,6 +5,7 @@ import Banner from './components/Banner'
 import Navbar from './components/Navbar'
 import type { devStackTypes } from './types/type'
 import Categories from './components/Categories'
+import Footer from './components/Footer'
 
 const categoriesFetch = async():Promise<devStackTypes[]>=>{
 const res = await fetch('/data.json')
@@ -22,7 +23,7 @@ function App() {
     <Suspense fallback={<span className='text-center mt-6'>Loading state.......</span>}>
     <Categories categoriesPromise={categoriesPromise}></Categories>
     </Suspense>
-    
+    <Footer></Footer>
     </div>
   )
 }
