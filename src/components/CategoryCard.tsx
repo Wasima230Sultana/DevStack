@@ -1,28 +1,44 @@
-import { useState, type Dispatch, type SetStateAction } from "react";
+
+import { type Dispatch, type SetStateAction } from "react";
 import type { devStackTypes } from "../types/type";
 import { toast } from "react-toastify";
 
 export interface ICategoryCArd {
-    category: devStackTypes,
-    selectedStack: devStackTypes[],
-    setSelectedStack: Dispatch<SetStateAction<devStackTypes[]>>
-    isSelected: boolean,
-    setIsSelected: Dispatch<SetStateAction<boolean>>
+    category: devStackTypes;
+    selectedStack: devStackTypes[];
+    setSelectedStack: Dispatch<SetStateAction<devStackTypes[]>>;
 }
 
-const CategoryCard = ({ category, selectedStack, setSelectedStack, isSelected, setIsSelected }: ICategoryCArd) => {
-    const [selected, setSelected] = useState<boolean>(false);
+const CategoryCard = ({
+    category,
+    selectedStack,
+    setSelectedStack,
+}: ICategoryCArd) => {
+
+
+    const isSelected = selectedStack.find(
+        (stack) => stack.id === category.id
+    );
+
     const handleStack = () => {
-        setIsSelected(true)
-        setSelected(true)
-        toast.success(" Added the stack successfully.")
-        setSelectedStack([...selectedStack, category])
 
+        if (isSelected) {
+            return;
+        }
+        setSelectedStack([...selectedStack, category]);
 
-    }
+        toast.success("Added the stack successfully.");
+    };
+
     return (
         <div>
-            <div className={`border ${selected ? 'border-red-400' : 'border-gray-300'}  p-5 rounded-3xl shadow-sm hover:shadow-lg transition duration-300`}>
+            <div
+                className={`border ${
+                    isSelected
+                        ? "border-red-400"
+                        : "border-gray-300"
+                } p-5 rounded-3xl shadow-sm hover:shadow-lg transition duration-300`}
+            >
 
                 {/* Header */}
                 <div className="flex justify-between items-start my-2">
@@ -45,14 +61,12 @@ const CategoryCard = ({ category, selectedStack, setSelectedStack, isSelected, s
 
                 </div>
 
-
                 {/* Description */}
                 <div className="my-4">
                     <p className="text-gray-600 line-clamp-2">
                         {category.description}
                     </p>
                 </div>
-
 
                 {/* Information */}
                 <div className="flex flex-wrap justify-between items-center gap-2 my-4">
@@ -71,26 +85,23 @@ const CategoryCard = ({ category, selectedStack, setSelectedStack, isSelected, s
 
                 </div>
 
-
                 {/* Button */}
-                <div className={` mt-5 `}>
+                <div className="mt-5">
 
-                    <div>
-                        <button onClick={() => handleStack()} className={`btn w-full rounded-2xl bg-black text-white hover:bg-gray-800
-                         ${selected ? 'bg-gray-400' : ''}
-                          border ${selected ? 'border-red-400' :'border-gray-300'}`}
-                        disabled={!!selected}
-                        >
-
-                            {
-                                ((selected) ? 'Added to Stack' : 'Add to Stack')
-                            }
-
-
-                        </button>
-                    </div>
-
-
+                    <button
+                        onClick={handleStack}
+                        disabled={isSelected}
+                        className={`btn w-full rounded-2xl border ${
+                            isSelected
+                                ? "bg-gray-400 border-red-400 cursor-not-allowed"
+                                : "bg-black text-white hover:bg-gray-800 border-gray-300"
+                        }`}
+                    >
+                        {isSelected
+                            ? "Added to Stack"
+                            : "Add to Stack"
+                        }
+                    </button>
 
                 </div>
 
