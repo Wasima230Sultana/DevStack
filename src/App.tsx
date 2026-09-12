@@ -14,7 +14,6 @@ return data;
 function App() {
  const [categoriesPromise] = useState(()=>categoriesFetch());
 
-
   return (
 
     <div className='container mx-auto max-w-7xl mt-3 p-2'>

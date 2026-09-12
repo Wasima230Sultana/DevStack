@@ -1,4 +1,4 @@
-import { use } from "react";
+import { use, useState } from "react";
 import type { devStackTypes } from "../types/type";
 import Category from "./Category";
 import ChooseStack from "./ChooseStack";
@@ -9,6 +9,9 @@ export interface ICategories {
 
 const Categories = ({ categoriesPromise }: ICategories) => {
     const categoriesData = use(categoriesPromise);
+    const [selectedStack, setSelectedStack] = useState<devStackTypes[]>([]);
+    const [isSelected, setIsSelected] = useState<boolean>(false);
+    const [isRemove, setIsRemove] = useState<boolean>(false);
     // console.log(categoriesData)
     return (
         <div className="my-6">
@@ -18,20 +21,22 @@ const Categories = ({ categoriesPromise }: ICategories) => {
 
             <div className="grid grid-cols-1  md:grid-cols-12 gap-4">
                 <div className="col-span-9 gap-2">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                        {
-                            categoriesData.map((category) =>
-                                <Category
-                                    key={category.id}
-                                    category={category}
-                                ></Category>)
-                        }
-                    </div>
-
+                    <Category
+                        categoriesData={categoriesData}
+                        selectedStack={selectedStack}
+                        setSelectedStack={setSelectedStack}
+                        isRemove={isRemove}
+                        setIsRemove={setIsRemove}
+                    ></Category>
                 </div>
 
                 <div className="col-span-3">
-                    <ChooseStack></ChooseStack>
+                    <ChooseStack
+                        selectedStack={selectedStack}
+                        setSelectedStack={setSelectedStack}
+                        isRemove={isRemove}
+                        setIsRemove={setIsRemove}
+                    ></ChooseStack>
                 </div>
 
             </div>
