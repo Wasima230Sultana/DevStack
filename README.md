@@ -3,7 +3,9 @@
 A simple and modern React application for exploring development categories and building a personalized technology stack.
 
 ---
+## 🌐 Live Demo
 
+👉 [DevStack Manager](https://app.netlify.com/projects/eloquent-mousse-a6b2b4/overview)
 ## 📌 Project Description
 
 **DevStack Manager** is a React + TypeScript project where users can browse different development technologies, add technologies to their personal stack, and remove them whenever they want.
