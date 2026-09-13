@@ -3,7 +3,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import logo from '../assets/logo-text.png'
 const Navbar = () => {
     return (
-        <div className='sticky top-0 z-50 bg-white'>
+        <div className='sticky top-0 z-50 bg-white p-2'>
             <div className=' flex justify-between items-center'>
                 <div className=' flex justify-between items-center'>
                     <div>
@@ -12,9 +12,9 @@ const Navbar = () => {
                         </button>
                     </div>
                     
-                        <div>
-                            <img className='' src={logo} alt="" />
-                        </div>
+                         <div className="flex justify-center md:justify-start">
+                                <img src={logo} alt="" />
+                            </div>
                     
                     
                 </div>
@@ -27,7 +27,7 @@ const Navbar = () => {
 
                 </div>
                 <div className=' flex items-center'>
-                    <button className='mr-3'>Sign in</button>
+                    <button className=' btn border-none bg-white rounded-3xl'>Sign in</button>
                     <button className='btn btn-active btn-secondary rounded-3xl'>Sign up</button>
 
                 </div>

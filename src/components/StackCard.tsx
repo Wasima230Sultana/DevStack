@@ -1,20 +1,33 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { devStackTypes } from "../types/type";
 import { MdOutlineCancel } from "react-icons/md";
+import { Bounce, toast } from "react-toastify";
 
 export interface IStackCard {
     stack: devStackTypes,
     selectedStack: devStackTypes[],
     setSelectedStack: Dispatch<SetStateAction<devStackTypes[]>>
- 
+
 }
 
 const StackCard = ({ stack, selectedStack, setSelectedStack }: IStackCard) => {
 
     const handleDelete = (stackId: string) => {
+
+        toast.success(`${stack.name} remove from the stack`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
         const remainingStack = selectedStack.filter((st) => st.id !== stackId)
         setSelectedStack(remainingStack);
-        
+
 
     }
 

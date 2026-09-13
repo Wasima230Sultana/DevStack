@@ -20,7 +20,8 @@ function App() {
     <div className='container mx-auto max-w-7xl mt-3 p-2'>
     <Navbar></Navbar>
     <Banner></Banner>
-    <Suspense fallback={<span className='text-center mt-6'>Loading state.......</span>}>
+    <Suspense fallback={<span className="loading loading-dots loading-md"></span>
+}>
     <Categories categoriesPromise={categoriesPromise}></Categories>
     </Suspense>
     <Footer></Footer>

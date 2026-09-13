@@ -1,7 +1,8 @@
 
 import { type Dispatch, type SetStateAction } from "react";
 import type { devStackTypes } from "../types/type";
-import { toast } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
+import { FaCheck } from "react-icons/fa";
 
 export interface ICategoryCArd {
     category: devStackTypes;
@@ -27,17 +28,26 @@ const CategoryCard = ({
         }
         setSelectedStack([...selectedStack, category]);
 
-        toast.success("Added the stack successfully.");
+        toast.success(`${category.name} added to the stack successfully!`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
     };
 
     return (
         <div>
             <div
-                className={`border ${
-                    isSelected
-                        ? "border-red-400"
-                        : "border-gray-300"
-                } p-5 rounded-3xl shadow-sm hover:shadow-lg transition duration-300`}
+                className={`border ${isSelected
+                    ? "border-red-400"
+                    : "border-gray-300"
+                    } p-5 rounded-3xl shadow-sm hover:shadow-lg transition duration-300`}
             >
 
                 {/* Header */}
@@ -91,12 +101,13 @@ const CategoryCard = ({
                     <button
                         onClick={handleStack}
                         disabled={isSelected}
-                        className={`btn w-full rounded-2xl border ${
-                            isSelected
-                                ? "bg-gray-400 border-red-400 cursor-not-allowed"
+                        className={`btn w-full rounded-2xl border ${isSelected
+                                ? "bg-gray-500 border-red-400 cursor-not-allowed text-amber-50"
                                 : "bg-black text-white hover:bg-gray-800 border-gray-300"
-                        }`}
+                            }`}
                     >
+                        {isSelected && <FaCheck />}
+
                         {isSelected
                             ? "Added to Stack"
                             : "Add to Stack"

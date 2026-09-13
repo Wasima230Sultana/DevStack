@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { devStackTypes } from "../types/type";
 import StackCard from "./StackCard";
+import { Bounce, toast } from "react-toastify";
 
 export interface IChooseStack {
     selectedStack: devStackTypes[],
@@ -10,6 +11,12 @@ export interface IChooseStack {
 
 const ChooseStack = ({ selectedStack, setSelectedStack }: IChooseStack) => {
     const handleAllRemove = () => {
+        toast.warning('All stacks removed from the stack', {
+            position: "top-center",
+            autoClose: 3000,
+            theme: "light",
+            transition: Bounce,
+        });
         setSelectedStack([]);
     }
     return (
@@ -46,7 +53,7 @@ const ChooseStack = ({ selectedStack, setSelectedStack }: IChooseStack) => {
                                 stack={stack}
                                 selectedStack={selectedStack}
                                 setSelectedStack={setSelectedStack}
-                                
+
                             />)
                     }
                 </div>

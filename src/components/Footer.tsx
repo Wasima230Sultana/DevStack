@@ -14,9 +14,9 @@ const Footer = () => {
                             <p className='my-4 text-sm text-[#64748B]'>Curated tools, technologies, and resources for developers building
                                 modern software.</p>
                             <div className='my-4'>
-                                <button className='mr-6 border-1 border-gray-300 p-1 rounded-4xl'>GitHub</button>
-                                <button className='mr-6 border-1 border-gray-300 p-1 rounded-4xl'>Twitter</button>
-                                <button className='mr-6 border-1 border-gray-300 p-1 rounded-4xl'>LinkedIn</button>
+                                <a className='mr-6 '>GitHub</a>
+                                <a className='mr-6 '>Twitter</a>
+                                <a className='mr-6 '>LinkedIn</a>
 
                             </div>
                         </div>
@@ -91,7 +91,7 @@ const Footer = () => {
 
 
                 </div>
-
+                <div className="divider"></div>
                 <div className='flex justify-between items-center p-1'>
                     <div>
                         <p className='text-[#94A3B8]'>© 2026 Dev Stack. All rights reserved.</p>
