@@ -24,6 +24,17 @@ const CategoryCard = ({
     const handleStack = () => {
 
         if (isSelected) {
+             toast.error(`${category.name} is already added to the stack.`, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
             return;
         }
         setSelectedStack([...selectedStack, category]);
@@ -100,7 +111,7 @@ const CategoryCard = ({
 
                     <button
                         onClick={handleStack}
-                        disabled={isSelected}
+                        // disabled={isSelected}
                         className={`btn w-full rounded-2xl border ${isSelected
                                 ? "bg-gray-500 border-red-400 cursor-not-allowed text-amber-50"
                                 : "bg-black text-white hover:bg-gray-800 border-gray-300"
